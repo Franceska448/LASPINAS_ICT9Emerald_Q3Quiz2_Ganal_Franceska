@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic, Comparison, and Logical Operators - ICT 3rd Quarter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ddbbbb;
+        }
+        .container {
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #99626f;
+            color: rgb(244, 233, 233);
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #996565;
+        }
+        .result p {
+            text-align: left;
+        }
+        .operator {
+            background-color: rgb(138, 169, 177);
+            padding: 3px 5px;
+            border-radius: 5px;
+            margin: 0 2px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Operators Demo</h1>
+        <p>Enter at least 2 numbers to see various results of operators!:</p>
+
+        <form id="operatorForm">
+            <label for="num1">Enter Number 1!:</label>
+            <input type="number" id="num1" required>
+            <label for="num2">Enter Number 2!:</label>
+            <input type="number" id="num2" required>
+            <button type="button" onclick="performOperations()">Compute Results</button>
+        </form>
+
+        <div class="result">
+            <h2>Results:</h2>
+            <p id="arithmetic"></p>
+            <p id="comparison"></p>
+            <p id="logical"></p>
+        </div>
+    </div>
+
+    <script>
+        function performOperations() {
+            // Get values from input fields
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+
+       
+            // Arithmetic Operations
+            const sum = num1 + num2;
+            const difference = num1 - num2;
+            const product = num1 * num2;
+            const quotient = num1 / num2;
+            const remainder = num1 % num2;
+
+            // Comparison Operations
+            const isEqual = num1 === num2;
+            const isGreaterThan = num1 > num2;
+            const isLessThan = num1 < num2;
+
+            // Logical Operations
+            const andResult = (num1 > 0) && (num2 > 0); 
+            const orResult = (num1 > 0) || (num2 > 0);  
+            const notResult = !(num1 === num2);         
+
+            // Display Results
+            document.getElementById("arithmetic").innerHTML = `
+                <strong>Arithmetic Operations:</strong><br>
+                Sum: <span class="operator">+</span> ${sum}<br>
+                Difference: <span class="operator">-</span> ${difference}<br>
+                Product: <span class="operator">*</span> ${product}<br>
+                Quotient: <span class="operator">/</span> ${quotient}<br>
+                Remainder: <span class="operator">%</span> ${remainder}<br>
+            `;
+
+            document.getElementById("comparison").innerHTML = `
+                <strong>Comparison Operations:</strong><br>
+                Are the numbers equal? <span class="operator">===</span> ${isEqual}<br>
+                Is the first number greater? <span class="operator">&gt;</span> ${isGreaterThan}<br>
+                Is the first number less? <span class="operator">&lt;</span> ${isLessThan}<br>
+            `;
+
+            document.getElementById("logical").innerHTML = `
+                <strong>Logical Operations:</strong><br>
+                Both numbers are positive? <span class="operator">&&</span> ${andResult}<br>
+                Either number is positive? <span class="operator">||</span> ${orResult}<br>
+                Are the numbers not equal? <span class="operator">!</span><span class="operator">=</span> ${notResult}<br>
+            `;
+        }
+    </script>
+
+</body>
+</html>
